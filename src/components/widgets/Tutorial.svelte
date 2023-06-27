@@ -39,7 +39,7 @@
 	</div>
 	<div>The letter <strong>U</strong> is not in the word in any spot.</div>
 </div>
-<div>
+<!-- <div>
 	This is a recreation of the original <a
 		href="https://www.nytimes.com/games/wordle/"
 		target="_blank"
@@ -52,7 +52,7 @@
 	<br />
 	Written with Svelte, in Typescript by
 	<a href="https://github.com/MikhaD" target="_blank" rel="noreferrer">MikhaD</a>.
-</div>
+</div> -->
 
 <style lang="scss">
 	div {

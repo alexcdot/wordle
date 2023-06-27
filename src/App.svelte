@@ -15,7 +15,7 @@
 	import { Toaster } from "./components/widgets";
 	import { setContext } from "svelte";
 
-	document.title = "Wordle+ | An infinite word guessing game";
+	document.title = "Wordle - The North York Times";
 </script>
 
 <script lang="ts">
@@ -45,7 +45,17 @@
 		localStorage.setItem("mode", `${m}`);
 		window.location.hash = GameMode[m];
 		stats = new Stats(localStorage.getItem(`stats-${m}`) || m);
-		word = words.words[seededRandomInt(0, words.words.length, modeData.modes[m].seed)];
+		
+		let wordIdx = localStorage.getItem('wordIdx');
+		if (wordIdx === null) wordIdx = '0';
+
+		const wordsList = ['while', 'yummy', 'rhyme'];
+
+		// word = words.words[seededRandomInt(0, words.words.length, modeData.modes[$mode].seed)];
+		word = wordsList[parseInt(wordIdx)];
+		localStorage.setItem('wordIdx', (parseInt(wordIdx) + 1).toString());
+
+		// word = words.words[seededRandomInt(0, words.words.length, modeData.modes[m].seed)];
 		if (modeData.modes[m].historical) {
 			state = new GameState(m, localStorage.getItem(`state-${m}-h`));
 		} else {
