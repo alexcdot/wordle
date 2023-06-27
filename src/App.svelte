@@ -52,8 +52,8 @@
 		const wordsList = ['while', 'yummy', 'rhyme'];
 
 		// word = words.words[seededRandomInt(0, words.words.length, modeData.modes[$mode].seed)];
-		word = wordsList[parseInt(wordIdx)];
-		localStorage.setItem('wordIdx', (parseInt(wordIdx) + 1).toString());
+		word = wordsList[parseInt(wordIdx) % 3];
+		// localStorage.setItem('wordIdx', ((parseInt(wordIdx) + 1) % 3).toString());
 
 		// word = words.words[seededRandomInt(0, words.words.length, modeData.modes[m].seed)];
 		if (modeData.modes[m].historical) {

@@ -103,6 +103,8 @@
 			stats = stats;
 			localStorage.setItem(`stats-${$mode}`, stats.toString());
 		}
+		let wordIdx = localStorage.getItem('wordIdx');
+		localStorage.setItem('wordIdx', ((parseInt(wordIdx) + 1) % 3).toString());
 	}
 
 	function lose() {
@@ -113,6 +115,8 @@
 			stats = stats;
 			localStorage.setItem(`stats-${$mode}`, stats.toString());
 		}
+		let wordIdx = localStorage.getItem('wordIdx');
+		localStorage.setItem('wordIdx', ((parseInt(wordIdx) + 1) % 3).toString());
 	}
 
 	function concede() {
@@ -131,8 +135,8 @@
 		const wordsList = ['while', 'yummy', 'rhyme'];
 
 		// word = words.words[seededRandomInt(0, words.words.length, modeData.modes[$mode].seed)];
-		word = wordsList[parseInt(wordIdx)];
-		localStorage.setItem('wordIdx', (parseInt(wordIdx) + 1).toString());
+		word = wordsList[parseInt(wordIdx) % 3];
+		// localStorage.setItem('wordIdx', ((parseInt(wordIdx) + 1) % 3).toString());
 
 		$letterStates = new LetterStates();
 		showStats = false;
