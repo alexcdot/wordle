@@ -78,6 +78,7 @@
 					game.validHard = false;
 				}
 			}
+			console.log(word);
 			game.board.state[game.guesses] = game.guess(word);
 			++game.guesses;
 			$letterStates.update(game.lastState, game.lastWord);
@@ -104,6 +105,9 @@
 			localStorage.setItem(`stats-${$mode}`, stats.toString());
 		}
 		let wordIdx = localStorage.getItem('wordIdx');
+		// Checks for not a number
+		if (!(parseInt(wordIdx) > -1)) wordIdx = '0';
+		console.log(`changing from ${wordIdx} to ${((parseInt(wordIdx) + 1) % 3).toString()}`);
 		localStorage.setItem('wordIdx', ((parseInt(wordIdx) + 1) % 3).toString());
 	}
 
@@ -116,6 +120,9 @@
 			localStorage.setItem(`stats-${$mode}`, stats.toString());
 		}
 		let wordIdx = localStorage.getItem('wordIdx');
+		// Checks for not a number
+		if (!(parseInt(wordIdx) > -1)) wordIdx = '0';
+		console.log(`changing from ${wordIdx} to ${((parseInt(wordIdx) + 1) % 3).toString()}`);
 		localStorage.setItem('wordIdx', ((parseInt(wordIdx) + 1) % 3).toString());
 	}
 
@@ -130,12 +137,14 @@
 		modeData.modes[$mode].seed = newSeed($mode);
 		game = new GameState($mode, localStorage.getItem(`state-${$mode}`));
 		let wordIdx = localStorage.getItem('wordIdx');
-		if (wordIdx === null) wordIdx = '0';
+		// Checks for not a number
+		if (!(parseInt(wordIdx) > -1)) wordIdx = '0';
 
 		const wordsList = ['while', 'yummy', 'rhyme'];
 
 		// word = words.words[seededRandomInt(0, words.words.length, modeData.modes[$mode].seed)];
 		word = wordsList[parseInt(wordIdx) % 3];
+		console.log(parseInt(wordIdx));
 		// localStorage.setItem('wordIdx', ((parseInt(wordIdx) + 1) % 3).toString());
 
 		$letterStates = new LetterStates();

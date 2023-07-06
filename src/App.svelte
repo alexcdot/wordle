@@ -47,12 +47,14 @@
 		stats = new Stats(localStorage.getItem(`stats-${m}`) || m);
 		
 		let wordIdx = localStorage.getItem('wordIdx');
-		if (wordIdx === null) wordIdx = '0';
+		// Checks for not a number
+		if (!(parseInt(wordIdx) > -1)) wordIdx = '0';
 
 		const wordsList = ['while', 'yummy', 'rhyme'];
 
 		// word = words.words[seededRandomInt(0, words.words.length, modeData.modes[$mode].seed)];
 		word = wordsList[parseInt(wordIdx) % 3];
+		console.log(parseInt(wordIdx), wordIdx);
 		// localStorage.setItem('wordIdx', ((parseInt(wordIdx) + 1) % 3).toString());
 
 		// word = words.words[seededRandomInt(0, words.words.length, modeData.modes[m].seed)];
